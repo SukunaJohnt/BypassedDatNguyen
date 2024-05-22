@@ -1,0 +1,101 @@
+--a
+ -- 
+ repeat wait() until game:IsLoaded()
+ wait(5)
+ local vu = game:GetService("VirtualUser")
+ game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(3)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+ end)
+
+if game.PlaceId ~= 9224601490 or shared.FruitBattlegrounds then return end;
+
+shared.FruitBattlegrounds = true;
+getgenv().Ammount = 20
+local ReplicatedStorage = game:GetService("ReplicatedStorage");
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local PlayerGui = LocalPlayer.PlayerGui;
+local MainData = LocalPlayer:WaitForChild("MAIN_DATA")
+local CurrentData = MainData:WaitForChild("Fruits"):WaitForChild(MainData:WaitForChild("Slots")[MainData:WaitForChild("Slot").Value].Value);
+
+
+
+while shared.FruitBattlegrounds do
+    pcall(function()
+	wait(0.25);
+
+    for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do 
+         if v:IsA("BoolValue") and v.Name == "__ADONIS_WINDOW" then 
+             v.Parent:Destroy()
+         end 
+        end 
+        
+	if game.Workspace.Characters.Players:FindFirstChild(game.Players.LocalPlayer.Name) == nil then 
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"BackSlash",false,game.Players.LocalPlayer)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,"BackSlash",false,game.Players.LocalPlayer)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"Return",false,game.Players.LocalPlayer)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,"Return",false,game.Players.LocalPlayer)
+        wait(2)
+	elseif game.Workspace.Characters.Players:FindFirstChild(game.Players.LocalPlayer.Name) then 
+
+        if getgenv().Ammount >= LocalPlayer.Character.Stats:GetAttribute("Stamina") then 
+            LocalPlayer.Character.Humanoid.Health = 0
+          end
+
+		LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-323.617798, 557.921387, -1409.63855, 0.555497468, -1.6509567e-08, 0.831518233, -7.00516978e-09, 1, 2.45345451e-08, -0.831518233, -1.94538039e-08, 0.555497468);
+        local args = {
+            [1] = "LightV2",
+            [2] = "PiercingShine",
+            [3] = {
+                ["Raycast"] = {
+                    ["Normal"] = Vector3.yAxis,
+                    ["Direction"] = Vector3.new(-284.63690185546875, -94.75055694580078, -2.042678117752075),
+                    ["Origin"] = Vector3.new(388.879150390625, 738.8067626953125, -678.883056640625),
+                    ["Instance"] = workspace:WaitForChild("Map"):WaitForChild("Model"):WaitForChild("Part"),
+                    ["Distance"] = 27.08168601989746,
+                    ["Material"] = Enum.Material.Foil,
+                    ["Position"] = Vector3.new(363.184326171875, 730.25341796875, -679.0674438476562)
+                }
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+        local args = {
+            [1] = "LightV2",
+            [2] = "XFlash",
+            [3] = {
+                ["MouseRay"] = {
+                    ["Normal"] = Vector3.yAxis,
+                    ["Direction"] = Vector3.new(-220.0137481689453, -82.2522964477539, -186.62400817871094),
+                    ["Origin"] = Vector3.new(357.56561279296875, 738.162353515625, -697.8867797851562),
+                    ["Instance"] = workspace:WaitForChild("Map"):WaitForChild("Model"):WaitForChild("Part"),
+                    ["Distance"] = 28.846385955810547,
+                    ["Material"] = Enum.Material.Foil,
+                    ["Position"] = Vector3.new(336.4102783203125, 730.25341796875, -715.83154296875)
+                }
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+        local args = {
+            [1] = "LightV2",
+            [2] = "MirrorFlight",
+            [3] = {
+                ["MouseRay"] = {
+                    ["Normal"] = Vector3.new(-1, 0, 0),
+                    ["Direction"] = Vector3.new(243.93722534179688, -29.086833953857422, 172.1876983642578),
+                    ["Origin"] = Vector3.new(355.51043701171875, 735.9651489257812, -714.4842529296875),
+                    ["Instance"] = workspace:WaitForChild("SafeZones"):WaitForChild("Dressrosa"):WaitForChild("MainColor"),
+                    ["Distance"] = 26.503665924072266,
+                    ["Material"] = Enum.Material.Slate,
+                    ["Position"] = Vector3.new(377.0611877441406, 733.3954467773438, -699.272216796875)
+                }
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+	end
+end)
+end;
